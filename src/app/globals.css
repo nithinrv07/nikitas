@@ -91,3 +91,40 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Atrium hero intro — CSS-driven so it never depends on frame rate. */
+@keyframes hero-veil {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes hero-rise {
+  from {
+    transform: translateY(110%);
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+.hero-veil {
+  animation: hero-veil 2.2s cubic-bezier(0.45, 0, 0.55, 1) 0.3s both;
+}
+.hero-char {
+  animation: hero-rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-fade {
+  animation: hero-fade 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-veil {
+    opacity: 0;
+    animation: none;
+  }
+  .hero-char,
+  .hero-fade {
+    animation: none;
+  }
+}
